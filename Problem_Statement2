@@ -1,0 +1,32 @@
+2.Write a C program to demonstrate indexing and associated operations.
+
+#include <stdio.h>
+
+int main() {
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    // Accessing elements using indexing
+    printf("First element: %d\n", numbers[0]);
+    printf("Third element: %d\n", numbers[2]);
+
+    // Modifying elements using indexing
+    numbers[1] = 100;
+    printf("Modified second element: %d\n", numbers[1]);
+
+    // Iterating over elements using indexing
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i + 1, numbers[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT :
+First element: 10
+Third element: 30
+Modified second element: 100
+Element 1: 10
+Element 2: 100
+Element 3: 30
+Element 4: 40
+Element 5: 50
