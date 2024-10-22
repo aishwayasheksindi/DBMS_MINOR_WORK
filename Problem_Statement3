@@ -1,0 +1,48 @@
+Write a Java  program to access the given excel file with known file format.
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ExcelReader {
+    public static void main(String[] args) throws IOException {
+        // Replace "your_file.xlsx" with the actual path to your Excel file
+        String filePath = "your_file.xlsx";
+
+        // Create an input stream to read the Excel file
+        FileInputStream inputStream = new FileInputStream(filePath);
+
+        // Create a Workbook object to represent the Excel file
+        Workbook workbook = new XSSFWorkbook(inputStream);
+
+        // Get the first sheet in the workbook
+        Sheet sheet = workbook.getSheetAt(0);
+
+        // Iterate over the rows in the sheet
+        for (Row row : sheet) {
+            // Iterate over the cells in the row
+            for (Cell cell : row) {
+                // Get the cell value based on its data type
+                switch (cell.getCellType()) {
+                    case NUMERIC:
+                        System.out.print(cell.getNumericCellValue() + "\t");
+                        break;
+                    case STRING:
+                        System.out.print(cell.getStringCellValue() + "\t");
+                        break;
+                    case BOOLEAN:
+                        System.out.print(cell.getBooleanCellValue() + "\t");
+                        break;
+                    // Handle other cell types as needed
+                }
+            }
+            System.out.println();
+        }
+
+        // Close the workbook and input stream
+        workbook.close();
+        inputStream.close();
+    }
+}
